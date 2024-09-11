@@ -8,18 +8,30 @@
         body{
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .container{
-            max-width: 800px;
+            max-width: 900px;
             min-width: 400px;
             margin: 0 auto;
-            height: 100vh;
             padding: 0 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        #content{
+            float:left;
+        }
+        #subBar{
+            float: right;
         }
         .top{
             text-align: center;
             margin: 50;
-
         }
         .top h1{
             font-size: 30px;
@@ -28,9 +40,6 @@
         .top p{
             font-size: 20px;   
         }
-        #content{
-        }
-        
         #subBar ul {
             list-style-type: none;
             padding: 0;
@@ -39,7 +48,7 @@
             width: 300px;
             border: 0.5px solid black;
             border-radius: 5px;
-        }
+        }   
         #group{
             list-style-type: none;
             margin: 10px;
@@ -47,23 +56,36 @@
         #name-group {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
+            gap: 10px;
+            
         }
-        #name-group div {
-            flex: 1;
+        #p-code{
+            background-color: white;
+            border: 0.7px solid black;
+            border-radius: 5px;
+            padding-left: 5px;   
+            padding-right: 5px;   
+            position: relative;
         }
-        .b-con{
-            display: flex;
-            justify-content: center;
+        #promo{
+            max-width: 65%;
         }
         #button-1{
+            background-color: darkgray;
+            text-align: center;
+            color: white;
             width: 95px;
             font-size: 15px;
             margin: 0;
             padding: 10;
+            border: 1px solid darkgray;
+            height: 40px;
+            border-radius: 5px;
+            
         }
         #button-c{
-            min-width: 400px;
+            /* min-width: 400px; */
+            width: 100%;
             padding: 15px;
             font-size: 22px;
             background-color: blue;
@@ -89,60 +111,129 @@
         img{
             width: 75px;
         }
-        
+        footer{
+            /* position: absolute; */
+            bottom: 0;
+            width: 100%;
+            text-align:  center;
+            padding-bottom: 20px;
+
+        }
+        @media (max-width: 900px){
+            #content{
+                float: none;
+            }
+            #subBar{
+                float: none;
+            }
+            #subBar ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                background-color: white;
+                width: 100%;
+                border: 0.5px solid black;
+                border-radius: 5px;
+            }
+            #group{
+                list-style-type: none;
+                margin: 10px;
+            }
+            #promo{
+                max-width: 75%;    
+            }
+            #name-group {
+                display: block;
+            }
+        }
+        .my-0{
+            font-size: 20px;
+            margin: 0;   
+        }
+        .cart-block{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 0.5px solid;
+            padding: 5px
+        }
+        /*  */
     </style>
   </head>
-  <body>
+    <body>
     <div class="container">
       <main>
         <div class="top">
             <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg">
           <h1>Checkout form</h1>
-          <p>
+          <p >
             Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.
           </p>
         </div>
-
-
-          <div id="subBar">
-            <h4 style="font-size: 25px; color: blue">Your cart</h4>
+          
+        <div id="subBar">
+            <h6 style=" color: blue; margin-bottom: 10px;">Your cart</h6>
             <ul>
-              <li id="group">Product name - $12</li>
-              <hr></hr>
-              <li id="group">Second product - $8</li>
-              <hr></hr>
-              <li id="group">Third item - $5</li>
-              <hr></hr>
-              <li id="group">Promo code: EXAMPLECODE - -$5</li>
-              <hr></hr>
-              <li id="group">Total (USD) - $20</li>
+              <li class="cart-block"><div>
+                <h5 class="my-0">Product name</h5>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$12</span></li>
+              <li class="cart-block"><div>
+                <h5 class="my-0">Second product</h5>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$8</span></li>
+              <li class="cart-block"><div>
+                <h6 class="my-0">Third item</h6>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$5</span></li>
+              <li class="cart-block"><div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small class="text-body-secondary">EXAMPLECODE</small>
+              </div>
+              <span class="text-success">−$5</span></li>
+              <li class="cart-block"><span>Total (USD)</span>
+                <strong>$20</strong></li>
             </ul>
-            <form>
-              <input type="text" placeholder="Promo code" style="width: 200px"/>
+            <form id="p-code">
+              <input id="promo" type="text" placeholder="Promo code"/>
               <button id="button-1" type="submit">Redeem</button>
             </form>
-          </div>
-          
-          <div id="content">
+        </div>
+
+        <div id="content">
             <form>
                 <h4 style="font-size: 23px; font-weight: lighter;">Billing address</h4>
-                <div id="name-group"><div>
+                <div id="name-group">
+                <div>
                     <label for="firstName">First name</label>
                     <input type="text" id="firstName" required />
                 </div>
                 <div>
                     <label for="lastName">Last name</label>
                     <input type="text" id="lastName" required />
-                </div></div>
+                </div>
+                </div>
                 
                 <div>
                     <label for="username">Username</label>
-                    <input
+                    <!-- <input
                     type="text"
                     id="username"
                     placeholder="Username"
                     required
-                    />
+                    /> -->
+                    <div><span class="input-group-text">@</span>
+
+                        <input
+                          type="text"
+                          id="username"
+                          placeholder="Username"
+                          required
+                        /></div>
+      
                 </div>
 
                 <div>
@@ -248,13 +339,12 @@
                     <div class="b-con"><button id="button-c" type="submit">Continue to checkout</button></div>
             </form>
             <hr></hr>
-          </div>
-          <footer style="text-align: center; padding-bottom: 20px;" >
-              <p>© 2024 Company Name</p>
-            </footer>        
         </div>
       </main>
-
+    </div>
+    <div ><footer style="text-align: center; padding-bottom: 20px;" >
+        <p>© 2024 Company Name</p>
+      </footer>
     </div>
     
   </body>
