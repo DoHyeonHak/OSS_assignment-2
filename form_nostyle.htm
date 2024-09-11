@@ -20,15 +20,34 @@
           <div id="subBar">
             <h4>Your cart</h4>
             <ul>
-              <li>Product name - $12</li>
-              <li>Second product - $8</li>
-              <li>Third item - $5</li>
-              <li>Promo code: EXAMPLECODE - -$5</li>
-              <li>Total (USD) - $20</li>
+              <li><div>
+                <h5 class="my-0">Product name</h5>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$12</span></li>
+              <li><div>
+                <h5 class="my-0">Second product</h5>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$8</span></li>
+              <li><div>
+                <h6 class="my-0">Third item</h6>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$5</span></li>
+              <li><div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small class="text-body-secondary">EXAMPLECODE</small>
+              </div>
+              <span class="text-success">−$5</span></li>
+              <li><span>Total (USD)</span>
+                <strong>$20</strong></li>
             </ul>
             <form>
-              <input type="text" placeholder="Promo code" />
-              <button type="submit">Redeem</button>
+              <div>
+                <input type="text" placeholder="Promo code" />
+                <button type="submit">Redeem</button>
+              </div>
             </form>
           </div>
           <br class="content">
@@ -44,12 +63,14 @@
               </div>
               <div>
                 <label for="username">Username</label>
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="Username"
-                  required
-                />
+                <div><span class="input-group-text">@</span>
+
+                  <input
+                    type="text"
+                    id="username"
+                    placeholder="Username"
+                    required
+                  /></div>
               </div>
               <div>
                 <label for="email">Email (Optional)</label>
