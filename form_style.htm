@@ -46,7 +46,7 @@
             margin: 0;
             background-color: white;
             width: 300px;
-            border: 0.5px solid black;
+            border: 0.5px solid darkgray;
             border-radius: 5px;
         }   
         #group{
@@ -112,7 +112,6 @@
             width: 75px;
         }
         footer{
-            /* position: absolute; */
             bottom: 0;
             width: 100%;
             text-align:  center;
@@ -140,24 +139,38 @@
                 margin: 10px;
             }
             #promo{
-                max-width: 75%;    
+                max-width: 75%;
             }
             #name-group {
                 display: block;
             }
         }
         .my-0{
-            font-size: 20px;
+            font-size: 17px;
+            font-weight: lighter;
             margin: 0;   
         }
         .cart-block{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 0.5px solid;
-            padding: 5px
+            border: 0.1px solid darkgray;
+            padding: 13px
         }
-        /*  */
+        .input-group-text{
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        .uname{
+            display: flex;
+            align-items: center;
+            
+        }
     </style>
   </head>
     <body>
@@ -172,7 +185,7 @@
         </div>
           
         <div id="subBar">
-            <h6 style=" color: blue; margin-bottom: 10px;">Your cart</h6>
+            <h6 style="font-size: 23px; color: blue; margin-bottom: 10px;">Your cart</h6>
             <ul>
               <li class="cart-block"><div>
                 <h5 class="my-0">Product name</h5>
@@ -189,7 +202,7 @@
                 <small class="text-body-secondary">Brief description</small>
               </div>
               <span class="text-body-secondary">$5</span></li>
-              <li class="cart-block"><div class="text-success">
+              <li class="cart-block" style="background-color: lightgray; color:#45a049"><div class="text-success" >
                 <h6 class="my-0">Promo code</h6>
                 <small class="text-body-secondary">EXAMPLECODE</small>
               </div>
@@ -205,7 +218,7 @@
 
         <div id="content">
             <form>
-                <h4 style="font-size: 23px; font-weight: lighter;">Billing address</h4>
+                <h4 style="font-size: 23px; font-weight: lighter">Billing address</h4>
                 <div id="name-group">
                 <div>
                     <label for="firstName">First name</label>
@@ -219,21 +232,13 @@
                 
                 <div>
                     <label for="username">Username</label>
-                    <!-- <input
-                    type="text"
-                    id="username"
-                    placeholder="Username"
-                    required
-                    /> -->
-                    <div><span class="input-group-text">@</span>
-
+                    <div class="uname"><span class="input-group-text">@</span>
                         <input
                           type="text"
                           id="username"
                           placeholder="Username"
                           required
                         /></div>
-      
                 </div>
 
                 <div>
