@@ -3,6 +3,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
+
+    <!-- 
+        예시 링크:  https://getbootstrap.com/docs/5.3/examples/checkout/
+
+        참고 링크:
+        
+        novalidate:
+        https://www.tcpschool.com/html-tag-attrs/form-novalidate#google_vignette
+        
+        validation check:
+        https://jollyworker.co.kr/html-폼에서-required-속성을-가진-필드의-유효성-검사/
+
+
+     -->
     <title>Lab1 Assignment - Checkout form page</title>
     <style>
         body{
@@ -221,14 +235,14 @@
                 <strong>$20</strong></li>
               </ul>
               <br>
-            <form id="p-code">
+            <div id="p-code">
               <input id="promo" type="text" placeholder="Promo code"/>
               <button id="button-1" type="submit">Redeem</button>
-            </form>
+            </div>
         </div>
 
         <div id="content">
-            <form>
+            <form id="checkout-form" novalidate>
                 <h4 style="font-size: 23px; font-weight: lighter">Billing address</h4>
                 <div id="name-group">
                 <div>
@@ -368,18 +382,20 @@
       </footer>
     </div>
     <script>
-      const checkBtn = document.getElementById("button-c");
-      checkBtn.onclick = function () {
-        const yon = confirm('Are you sure you want to submit it? Have you filled out all the required elements?')
-        if(!yon){
-          event.preventDefault();
-        }
-      };
-      const redeemBtn = document.getElementById("button-1");
-      redeemBtn.onclick = function(){
-        alert('There is no input. please enter if you want.');
-      }
-
+        // 브라우저 자체에서 주는 경고 메시지가 있어서 script를 설정해도 가려지는 경우가 있다.
+        // 이럴 땐 form 에 novalidate 설정을 해야 된다.
+        // https://www.tcpschool.com/html-tag-attrs/form-novalidate#google_vignette
+        // novalidate는 브라우저와 직접적인 관련이 있는 것 같다. js로 유효성 검사를 하지 않아도 검사되는 경우가 novalidate가 없기 때문이다.
+        // 그래서 이걸로 끈 다음에 코드를 적용하니 된다.
+        // https://jollyworker.co.kr/html-폼에서-required-속성을-가진-필드의-유효성-검사/
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                alert('Please fill out all required fields.');
+                const invalidFields = document.querySelectorAll('input:invalid, select:invalid');
+                event.preventDefault();
+            }
+        });
     </script>
   </body>
 </html>
