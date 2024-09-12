@@ -171,6 +171,19 @@
             align-items: center;
             
         }
+        .list-inline {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .list-inline-item {
+            margin-right: 15px;
+        }
+        .list-inline-item:last-child {
+            margin-right: 0;
+        }
     </style>
   </head>
     <body>
@@ -347,8 +360,13 @@
         </div>
       </main>
     </div>
-    <div ><footer style="text-align: center; padding-bottom: 20px;" >
+    <div ><footer style="text-align: center; padding-bottom: 20px; margin-top: 50px;" >
         <p>© 2024 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
       </footer>
     </div>
     
