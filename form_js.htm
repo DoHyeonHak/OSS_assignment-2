@@ -1,9 +1,385 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <title>Lab1 Assignment - Checkout form page</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container{
+            max-width: 900px;
+            min-width: 400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        #content{
+            float:left;
+        }
+        #subBar{
+            float: right;
+            border-radius: 10px;
+        }
+        .top{
+            text-align: center;
+            margin: 50px;
+        }
+        .top h1{
+            font-size: 30px;
+            font-weight: lighter;
+        }
+        .top p{
+            font-size: 20px;   
+        }
+        #subBar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            background-color: white;
+            width: 300px;
+            border: 0.5px solid darkgray;
+            border-radius: 10px;
+        }   
+        #group{
+            list-style-type: none;
+            margin: 10px;
+        }
+        #name-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        #p-code{
+            background-color: white;
+            border: 0.7px solid black;
+            border-radius: 5px;
+            padding-left: 5px;   
+            padding-right: 5px;   
+            position: relative;
+        }
+        #promo{
+            max-width: 65%;
+        }
+        #button-1{
+            background-color: darkgray;
+            text-align: center;
+            color: white;
+            width: 95px;
+            font-size: 15px;
+            margin: 0;
+            padding: 10;
+            border: 1px solid darkgray;
+            height: 40px;
+            border-radius: 5px;
+        }
+        #button-c{
+            width: 100%;
+            padding: 15px;
+            font-size: 22px;
+            background-color: blue;
+            border: 0px;
+            border-radius: 10px;
+            color: white;
+            
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        img{
+            width: 75px;
+        }
+        footer{
+            bottom: 0;
+            width: 100%;
+            text-align:  center;
+            padding-bottom: 20px;
+
+        }
+        @media (max-width: 900px){
+            #content{
+                float: none;
+            }
+            #subBar{
+                float: none;
+            }
+            #subBar ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                background-color: white;
+                width: 100%;
+                border: 0.5px solid black;
+                border-radius: 5px;
+            }
+            #group{
+                list-style-type: none;
+                margin: 10px;
+            }
+            #promo{
+                max-width: 75%;
+            }
+            #name-group {
+                display: block;
+            }
+        }
+        .my-0{
+            font-size: 17px;
+            font-weight: lighter;
+            margin: 0;
+        }
+        .cart-block{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 0.1px solid darkgray;
+            padding: 13px
+        }
+        .input-group-text{
+            background-color: #f2f2f2;
+            border: 0.1px solid darkgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 38px;
+            border-radius: 5px;
+        }
+        .uname{
+            display: flex;
+            align-items: center;
+            
+        }
+        .list-inline {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .list-inline-item {
+            margin-right: 15px;
+        }
+        .list-inline-item:last-child {
+            margin-right: 0;
+        }
+    </style>
   </head>
-  <body></body>
+    <body>
+    <div class="container">
+      <main>
+        <div class="top">
+            <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" onmouseover="this.style.width='300px'" onmouseout="this.style.width='70px'">
+          <h1>Checkout form</h1>
+          <p style="font-weight: lighter;">
+            Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.
+          </p>
+        </div>
+          
+        <div id="subBar">
+            <h6 style="font-size: 23px; color: blue; margin-bottom: 10px; margin-top: 20px;">Your cart</h6>
+            <ul>
+              <li class="cart-block"><div>
+                <h5 class="my-0">Product name</h5>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$12</span></li>
+              <li class="cart-block"><div>
+                <h5 class="my-0">Second product</h5>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$8</span></li>
+              <li class="cart-block"><div>
+                <h6 class="my-0">Third item</h6>
+                <small class="text-body-secondary">Brief description</small>
+              </div>
+              <span class="text-body-secondary">$5</span></li>
+              <li class="cart-block" style="background-color: lightgray; color:#45a049"><div class="text-success" >
+                <h6 class="my-0">Promo code</h6>
+                <small class="text-body-secondary">EXAMPLECODE</small>
+              </div>
+              <span class="text-success">−$5</span></li>
+              <li class="cart-block"><span>Total (USD)</span>
+                <strong>$20</strong></li>
+              </ul>
+              <br>
+            <form id="p-code">
+              <input id="promo" type="text" placeholder="Promo code"/>
+              <button id="button-1" type="submit">Redeem</button>
+            </form>
+        </div>
+
+        <div id="content">
+            <form>
+                <h4 style="font-size: 23px; font-weight: lighter">Billing address</h4>
+                <div id="name-group">
+                <div>
+                    <label for="firstName">First name</label>
+                    <input type="text" id="firstName" required />
+                </div>
+                <div>
+                    <label for="lastName">Last name</label>
+                    <input type="text" id="lastName" required />
+                </div>
+                </div>
+                
+                <div>
+                    <label for="username">Username</label>
+                    <div class="uname"><span class="input-group-text">@</span>
+                        <input
+                          type="text"
+                          id="username"
+                          placeholder="Username"
+                          required
+                        /></div>
+                </div>
+
+                <div>
+                    <label for="email">Email (Optional)</label>
+                    <input type="text" id="email" placeholder="you@example.com" />
+                </div>
+
+                <div>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" placeholder="1234 Main St" required />
+                </div>
+                
+                <div>
+                    <label for="address2">Address 2 (Optional)</label>
+                    <input type="text" id="address2" placeholder="Apartment or suite" />
+                </div>
+                <div>
+                    <label for="country">Country</label>
+                    <select id="country" required>
+                    <option value="">Choose...</option>
+                    <option>United States</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="state">State</label>
+                    <select id="state" required>
+                    <option value="">Choose...</option>
+                    <option>California</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="zip">Zip</label>
+                    <input type="text" id="zip" required />
+                </div>
+                <hr></hr>
+                <div id="addressCheck">
+                    <input type="checkbox" id="same" />
+                    <label for="same"
+                    >Shipping address is the same as my billing address</label
+                    >
+                </div>
+                <div id="saveCheck">
+                    <input type="checkbox" id="save" />
+                    <label for="save">Save this information for next time</label>
+                </div>
+                <hr></hr>
+                <h4>Payment</h4>
+                <div>
+                    <input
+                    type="radio"
+                    id="credit"
+                    name="paymentMethod"
+                    checked
+                    required
+                    />
+                    <label for="credit">Credit card</label>
+                </div>
+                <div>
+                    <input type="radio" id="debit" name="paymentMethod" required />
+                    <label for="debit">Debit card</label>
+                </div>
+                <div>
+                    <input type="radio" id="paypal" name="paymentMethod" required />
+                    <label for="paypal">PayPal</label>
+                </div>
+                <br></br>
+                <div>
+                    <label for="name">Name on card</label>
+                    <input type="text" id="name" required />
+                    <br>Full name as displayed on card</br>
+                </div>
+                <div>
+                    <label for="number">Credit card number</label>
+                    <input type="text" id="number" required />
+                </div>
+                <div>
+                    <label for="expiration">Expiration</label>
+                    <input type="text" id="expiration" required />
+                </div>
+                <div>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" required />
+                </div>
+                <hr></hr>
+                <h3>Additional Personal Information</h3>
+                    <p>
+                    Birth
+                    <input
+                        type="date"
+                        id="event"
+                        name="event"
+                        min="1950-01-01"
+                        max="2023-12-31"
+                        required
+                    />
+                    </p>
+                    <p>Address</p>
+                    <textarea name="message" rows="8" cols="50" placeholder="Enter"></textarea>
+                    <br></br>
+                    <button type="submit">save</button>
+                    <br></br>
+                    <br></br>
+                    <div class="b-con"><button id="button-c" type="submit">Continue to checkout</button></div>
+            </form>
+            <hr></hr>
+        </div>
+      </main>
+    </div>
+    <div ><footer style="text-align: center; padding-bottom: 20px; margin-top: 50px;" >
+        <p>© 2024 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+      </footer>
+    </div>
+    <script>
+      const checkBtn = document.getElementById("button-c");
+      checkBtn.onclick = function () {
+        const yon = confirm('Are you sure you want to submit it? Have you filled out all the required elements?')
+        if(!yon){
+          event.preventDefault();
+        }
+      };
+      const redeemBtn = document.getElementById("button-1");
+      redeemBtn.onclick = function(){
+        alert('There is no input. please enter if you want.');
+      }
+
+    </script>
+  </body>
 </html>
