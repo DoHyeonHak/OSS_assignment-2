@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Web Page</title>
+    <style>
+        body{
+            background-color: lightpink;
+        }
+        body h3 {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            max-width: 300px;
+            padding: 10px;
+            font-size: 30px;
+            border: 1px solid black;
+        }
+        .container{
+            max-width: 800px;
+            
+        }
+        #item {
+            padding: 10px;
+            width: 300px;
+            height: 40px;
+        }
+        #add_button {
+            width: 80px;
+            height: 30px;
+            background-color: cornflowerblue;
+            color: white;
+        }
+        #delete_button {
+            width: 80px;
+            height: 30px;
+            background-color: cornflowerblue;
+            color: white;
+        }
+        #list{
+            background-color: white;
+            width: 300px;
+            font-family: Arial, sans-serif;
+            
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h3>Dynamic Web Page</h3>
+        <p style="background-color: white; max-width: 300px; padding: 10px; border: 1px solid black;">This Web Page is for saving user name. Input user name.</p>
+        <input type="text" id="item" />
+        <br></br>
+        <button id="add_button">Add</button>
+        <button id="delete_button">Delete</button>
+        <ul id="list"></ul>
+    </div>
+    <script>
+      window.onload = function () {
+        let add_b = document.getElementById("add_button");
+        let delete_b = document.getElementById("delete_button");
+        let input_i = document.getElementById("item");
+        let list = document.getElementById("list");
+        add_b.onclick = function () {
+          let value = input_i.value;
+          if (value) {
+            let listItem = document.createElement("li");
+            listItem.textContent = value;
+            list.appendChild(listItem);
+            input_i.value = "";
+          }
+        };
+        delete_b.onclick = function () {
+          list.innerHTML = "";
+        };
+      };
+    </script>
+  </body>
+</html>
