@@ -28,10 +28,11 @@
         }
         #subBar{
             float: right;
+            border-radius: 10px;
         }
         .top{
             text-align: center;
-            margin: 50;
+            margin: 50px;
         }
         .top h1{
             font-size: 30px;
@@ -47,7 +48,7 @@
             background-color: white;
             width: 300px;
             border: 0.5px solid darkgray;
-            border-radius: 5px;
+            border-radius: 10px;
         }   
         #group{
             list-style-type: none;
@@ -57,7 +58,6 @@
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            
         }
         #p-code{
             background-color: white;
@@ -81,10 +81,8 @@
             border: 1px solid darkgray;
             height: 40px;
             border-radius: 5px;
-            
         }
         #button-c{
-            /* min-width: 400px; */
             width: 100%;
             padding: 15px;
             font-size: 22px;
@@ -103,11 +101,9 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-
         input[type=submit]:hover {
             background-color: #45a049;
         }
-
         img{
             width: 75px;
         }
@@ -148,7 +144,7 @@
         .my-0{
             font-size: 17px;
             font-weight: lighter;
-            margin: 0;   
+            margin: 0;
         }
         .cart-block{
             display: flex;
@@ -158,12 +154,13 @@
             padding: 13px
         }
         .input-group-text{
-            background-color: lightgray;
+            background-color: #f2f2f2;
+            border: 0.1px solid darkgray;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 40px;
-            height: 40px;
+            height: 38px;
             border-radius: 5px;
         }
         .uname{
@@ -192,13 +189,13 @@
         <div class="top">
             <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg">
           <h1>Checkout form</h1>
-          <p >
+          <p style="font-weight: lighter;">
             Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.
           </p>
         </div>
           
         <div id="subBar">
-            <h6 style="font-size: 23px; color: blue; margin-bottom: 10px;">Your cart</h6>
+            <h6 style="font-size: 23px; color: blue; margin-bottom: 10px; margin-top: 20px;">Your cart</h6>
             <ul>
               <li class="cart-block"><div>
                 <h5 class="my-0">Product name</h5>
@@ -222,7 +219,8 @@
               <span class="text-success">−$5</span></li>
               <li class="cart-block"><span>Total (USD)</span>
                 <strong>$20</strong></li>
-            </ul>
+              </ul>
+              <br>
             <form id="p-code">
               <input id="promo" type="text" placeholder="Promo code"/>
               <button id="button-1" type="submit">Redeem</button>
