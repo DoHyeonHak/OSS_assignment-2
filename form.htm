@@ -5,55 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamic Web Page</title>
     <style>
-        body{
-            background-color: lightpink;
-        }
-        body h3 {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            max-width: 300px;
-            padding: 10px;
-            font-size: 30px;
-            border: 1px solid black;
-        }
-        .container{
-            max-width: 800px;
-            
-        }
-        #item {
-            padding: 10px;
-            width: 300px;
-            height: 40px;
-        }
-        #add_button {
-            width: 80px;
-            height: 30px;
-            background-color: cornflowerblue;
-            color: white;
-        }
-        #delete_button {
-            width: 80px;
-            height: 30px;
-            background-color: cornflowerblue;
-            color: white;
-        }
-        #list{
-            background-color: white;
-            width: 300px;
-            font-family: Arial, sans-serif;
-            
-        }
+      #add_button {
+        width: 60px;
+
+        background-color: blue;
+        color: white;
+      }
+      #delete_button {
+        width: 60px;
+        background-color: green;
+        color: white;
+      }
+      #list {
+        font-family: Arial, sans-serif;
+      }
     </style>
   </head>
   <body>
+    <h3 style="font-family: Arial, sans-serif; font-size: 30px">
+      Dynamic Web Page
+    </h3>
     <div class="container">
-        <h3>Dynamic Web Page</h3>
-        <p style="background-color: white; max-width: 300px; padding: 10px; border: 1px solid black;">This Web Page is for saving user name. Input user name.</p>
-        <input type="text" id="item" />
-        <br></br>
-        <button id="add_button">Add</button>
-        <button id="delete_button">Delete</button>
-        <ul id="list"></ul>
+      <input type="text" id="item" />
+      <button id="add_button">Add</button>
+      <button id="delete_button">Delete</button>
+      <ul id="list"></ul>
     </div>
     <script>
       window.onload = function () {
@@ -61,10 +37,12 @@
         let delete_b = document.getElementById("delete_button");
         let input_i = document.getElementById("item");
         let list = document.getElementById("list");
+
         add_b.onclick = function () {
           let value = input_i.value;
           if (value) {
-            let listItem = document.createElement("li");
+            let listItem = document.createElement("li"); // 이걸로 list를 늘리나보다
+            // list.innerHTML = "<li>" + value + "</li>";
             listItem.textContent = value;
             list.appendChild(listItem);
             input_i.value = "";
@@ -74,6 +52,10 @@
           list.innerHTML = "";
         };
       };
+      /*
+      window.onload: 페이지의 모든 리소스(이미지, CSS, JS 등)가 로드된 후에 실행
+      document.onready (DOMContentLoaded): DOM 트리만 준비되면 외부 리소스에 상관없이 바로 실행
+      */
     </script>
   </body>
 </html>
