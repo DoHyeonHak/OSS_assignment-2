@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<link rel="stylesheet" href="my.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <style></style>
+  
+  <body>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2 onclick="window.location.href='view.html'">Book Management</h2>
+					</div>
+					<div class="col-sm-6">
+						<a class="btn btn-success" data-toggle="modal" onclick="window.location.href='add.html'"><i class="material-icons">&#xE147;</i> <span>Add New Book</span></a>
+					</div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+						<th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+						</th>
+                        <th>Boot title</th>
+                        <th>author</th>
+						<th>genre</th>
+						<th>publisher</th>
+                        <th>publication year</th>
+                        <th>ISBN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+                            <td>To Kill a Mockingbird</td>
+                            <td>Harper Lee</td>
+                            <td>Fiction</td>
+                            <td>J.B. Lippincott & Co.</td>
+                            <td>1960</td>
+                            <td>978-0061120084</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox2" name="options[]" value="1">
+								<label for="checkbox2"></label>
+							</span>
+						</td>
+                        <td>The Great Gatsby</td>
+                        <td>F. Scott Fitzgerald</td>
+                        <td>Fiction</td>
+                        <td>Charles Scribner's Sons</td>
+                        <td>1925</td>
+                        <td>978-0743273565</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox3" name="options[]" value="1">
+								<label for="checkbox3"></label>
+							</span>
+						</td>
+                        <td>Moby Dick</td>
+                        <td>Herman Melville</td>
+                        <td>Fiction</td>
+                        <td>Richard Bentley</td>
+                        <td>1851</td>
+                        <td>978-1503280786</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox4" name="options[]" value="1">
+								<label for="checkbox4"></label>
+							</span>
+						</td>
+                        <td>Pride and Prejudice</td>
+                        <td>Jane Austen</td>
+                        <td>Romance</td>
+                        <td>T. Egerton, Whitehall</td>
+                        <td>1813</td>
+                        <td>978-1503290563</td>
+                        <td>
+                            <a  class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a  class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>					
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox5" name="options[]" value="1">
+								<label for="checkbox5"></label>
+							</span>
+						</td>
+                        <td>The Catcher in the Rye</td>
+                        <td>J.D. Salinger</td>
+                        <td>Fiction</td>
+                        <td>Little, Brown and Company</td>
+                        <td>1951</td>
+                        <td>978-0316769488</td>
+                        <td>
+                            <a  class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a  class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+					<tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox2" name="options[]" value="1">
+								<label for="checkbox6"></label>
+							</span>
+						</td>
+                        <td>The Hobbit</td>
+                        <td>J.R.R. Tolkien</td>
+                        <td>Fantasy</td>
+                        <td>George Allen & Unwin</td>
+                        <td>1937</td>
+                        <td>978-0261103344</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+                        <td>Fahrenheit 451</td>
+                        <td>Ray Bradbury</td>
+                        <td>Dystopian Fiction</td>
+                        <td>Ballantine Books</td>
+                        <td>1953</td>
+                        <td>978-1451673319</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+                        <td>The Diary of a Young Girl</td>
+                        <td>Anne Frank</td>
+                        <td>Biography</td>
+                        <td>Bantam Books</td>
+                        <td>1947</td>
+                        <td>978-0553296983</td>                
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+                        <td>Brave New World</td>
+                        <td>Aldous Huxley</td>
+                        <td>Dystopian Fiction</td>
+                        <td>Chatto & Windus</td>
+                        <td>1932</td>
+                        <td>978-0060850524</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+						<td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+						</td>
+                        <td>1984</td>
+                        <td>George Orwell</td>
+                        <td>Dystopian Fiction</td>
+                        <td>Secker & Warburg</td>
+                        <td>1949</td>
+                        <td>978-0451524935</td>
+                        <td>
+                            <a class="edit" onclick="window.location.href='edit.html'" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+					
+                </tbody>
+            </table>
+        </div>
+    </div>
+	
+</body>
+</html>
