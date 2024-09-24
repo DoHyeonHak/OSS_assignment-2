@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="my.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <form>
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Book</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Book title</label>
+          <input type="text" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>author</label>
+          <input type="text" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>genre</label>
+          <textarea class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>publisher</label>
+          <input type="text" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>publication year</label>
+          <input type="text" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>ISBN</label>
+          <input type="text" class="form-control" required />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-success" value="Submit" />
+        <input
+          type="button"
+          class="btn btn-default"
+          data-dismiss="modal"
+          value="Cancel"
+          onclick="window.location.href='index.html'"
+        />
+      </div>
+    </form>
+
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function (event) {
+        if (!form.checkValidity()) {
+          alert("Please fill out all required fields.");
+          const invalidFields = document.querySelectorAll(
+            "input:invalid, select:invalid"
+          );
+          event.preventDefault();
+        } else {
+          window.confirm("Do you want to edit this item?");
+        }
+      });
+    </script>
+  </body>
+</html>
