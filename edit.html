@@ -23,36 +23,39 @@
     />
   </head>
   <body>
-    <form class="container">
+    <form
+      name="form1"
+      onsubmit="return validateForm()"
+      method="post"
+      class="container">
       <div class="modal-header">
         <h4 class="modal-title">Edit Book</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <label>Book title</label>
-          <input type="text" class="form-control" required />
+          <input type="text" name="subject" class="form-control" />
         </div>
         <div class="form-group">
           <label>author</label>
-          <input type="text" class="form-control" required />
+          <input type="text" name="subject2" class="form-control" />
         </div>
         <div class="form-group">
           <label>genre</label>
-          <textarea class="form-control" required></textarea>
+          <textarea name="subject3" class="form-control"></textarea>
         </div>
         <div class="form-group">
           <label>publisher</label>
-          <input type="text" class="form-control" required />
+          <input type="text" name="subject4" class="form-control" />
         </div>
         <div class="form-group">
           <label>publication year</label>
-          <input type="text" class="form-control" required />
+          <input type="text" name="subject5" class="form-control" />
         </div>
         <div class="form-group">
           <label>ISBN</label>
-          <input type="text" class="form-control" required />
+          <input type="text" name="subject6" class="form-control" />
         </div>
-      </div>
       <div class="modal-footer">
         <input type="submit" class="btn btn-success" value="Submit" />
         <input
@@ -66,18 +69,54 @@
     </form>
 
     <script>
-      const form = document.querySelector("form");
-      form.addEventListener("submit", function (event) {
-        if (!form.checkValidity()) {
-          alert("Please fill out all required fields.");
-          const invalidFields = document.querySelectorAll(
-            "input:invalid, select:invalid"
-          );
-          event.preventDefault();
-        } else {
-          window.confirm("Do you want to edit this item?");
+      function validateForm() {
+        event.preventDefault();
+
+        var subject = document.form1.subject;
+        if (subject.value == "") {
+          alert("Please enter a title");
+          subject.focus();
+          return false;
         }
-      });
+
+        var subject2 = document.form1.subject2;
+        if (subject2.value == "") {
+          alert("Please enter the author name");
+          subject2.focus();
+          return false;
+        }
+
+        var subject3 = document.form1.subject3;
+        if (subject3.value == "") {
+          alert("Please enter the genre");
+          subject3.focus();
+          return false;
+        }
+
+        var subject4 = document.form1.subject4;
+        if (subject4.value == "") {
+          alert("Please enter the publisher");
+          subject4.focus();
+          return false;
+        }
+
+        var subject5 = document.form1.subject5;
+        if (subject5.value == "") {
+          alert("Please enter the publication year");
+          subject5.focus();
+          return false;
+        }
+
+        var subject6 = document.form1.subject6;
+        if (subject6.value == "") {
+          alert("Please enter ISBN");
+          subject6.focus();
+          return false;
+        }
+        window.confirm("Do you want to edit this item?");
+        document.form1.reset();
+        return true;
+      }
     </script>
   </body>
 </html>
