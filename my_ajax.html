@@ -34,7 +34,7 @@
 
       function getProducts() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
+        xhr.open("GET", "http://localhost:3001/products");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send();
 
@@ -55,7 +55,7 @@
         let category = document.getElementById("category");
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
+        xhr.open("POST", "http://localhost:3001/products");
         xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
         const data = {
           name: name.value,
@@ -142,7 +142,7 @@
         let category = document.getElementById("m_category").value;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("PUT", "https://jsonplaceholder.typicode.com/posts/" + id);
+        xhr.open("PUT", "http://localhost:3001/products/" + id);
         xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
         const data = {
           name: name,
@@ -163,7 +163,7 @@
 
       function deleteData(id) {
         const xhr = new XMLHttpRequest();
-        xhr.open("DELETE", "https://jsonplaceholder.typicode.com/posts/" + id);
+        xhr.open("DELETE", "http://localhost:3001/products/" + id);
         xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
         xhr.send();
 
