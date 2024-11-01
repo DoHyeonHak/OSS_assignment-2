@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Products Management CRUD</title>
     <style>
       h2 {
         text-align: center;
@@ -34,14 +34,16 @@
 
       function getProducts() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://localhost:3001/products");
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
         xhr.setRequestHeader("content-type", "application/json");
         xhr.send();
 
         xhr.onload = () => {
           if (xhr.status === 200) {
             const res = JSON.parse(xhr.response);
-            document.getElementById("contents").innerHTML = makeList(res);
+            document.getElementById("contents").innerHTML = makeList(
+              res.slice(0, 10)
+            ); // 처음 10개의 데이터만 표시
           } else {
             console.log(xhr.status, xhr.statusText);
           }
@@ -49,29 +51,23 @@
       }
 
       function postData() {
-        let name = document.getElementById("name");
-        let price = document.getElementById("price");
-        let stock = document.getElementById("stock");
-        let category = document.getElementById("category");
+        let name = document.getElementById("name").value;
+        let price = document.getElementById("price").value;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:3001/products");
+        xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
         xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
         const data = {
-          name: name.value,
-          price: price.value,
-          stock: stock.value,
-          category: category.value,
+          title: name, // name 대신 title 필드 사용
+          body: price, // price 대신 body 필드 사용
+          userId: 1,
         };
         xhr.send(JSON.stringify(data));
 
         xhr.onload = () => {
-          if (xhr.status == 201) {
-            name.value = "";
-            price.value = "";
-            stock.value = "";
-            category.value = "";
-            getProducts();
+          if (xhr.status === 201) {
+            console.log("Product added:", JSON.parse(xhr.response)); // 성공 메시지
+            getProducts(); // 새 데이터를 가져와 업데이트
           } else {
             console.log(xhr.status, xhr.statusText);
           }
@@ -80,51 +76,31 @@
 
       function makeList(data) {
         let str = "<ul>";
-        for (let key in data) {
+        data.forEach((item) => {
           str +=
-            "<li> " +
-            data[key].name +
-            " | $" +
-            data[key].price +
-            " | Stock: " +
-            data[key].stock +
-            " | Category: " +
-            data[key].category +
-            "</li>";
+            "<li> Title: " + item.title + " | Body: " + item.body + "</li>";
           str +=
-            "<button onclick='updateForm(\"" +
-            data[key].id +
+            "<button onclick='updateForm(" +
+            item.id +
+            ', "' +
+            item.title +
             '", "' +
-            data[key].name +
-            '", "' +
-            data[key].price +
-            '", "' +
-            data[key].category +
-            '", "' +
-            data[key].stock +
+            item.body +
             "\")'>Modify</button>" +
-            "<button onclick='deleteData(\"" +
-            data[key].id +
-            "\")'>delete</button>";
-        }
+            "<button onclick='deleteData(" +
+            item.id +
+            ")'>Delete</button>";
+        });
         str += "</ul>";
         return str;
       }
 
-      function updateForm(
-        id,
-        currentName,
-        currentPrice,
-        currentCategory,
-        currentStock
-      ) {
+      function updateForm(id, currentTitle, currentBody) {
         let updateForm = `
         <div id="updateForm">
-          <input type="text" id="m_name" placeholder="New name" value="${currentName}" />
-          <input type="text" id="m_price" placeholder="New price" value="${currentPrice}" />
-          <input type="text" id="m_category" placeholder="New Category" value="${currentCategory}" />
-          <input type="text" id="m_stock" placeholder="New Stock" value="${currentStock}" />
-          <button onclick="updateData('${id}')">Modify</button>
+          <input type="text" id="m_name" placeholder="New Title" value="${currentTitle}" />
+          <input type="text" id="m_price" placeholder="New Body" value="${currentBody}" />
+          <button onclick="updateData(${id})">Modify</button>
           <button id="cancelButton" onclick="cancelUpdate()">Cancel</button>
         </div>
       `;
@@ -136,24 +112,22 @@
       }
 
       function updateData(id) {
-        let name = document.getElementById("m_name").value;
-        let price = document.getElementById("m_price").value;
-        let stock = document.getElementById("m_stock").value;
-        let category = document.getElementById("m_category").value;
+        let title = document.getElementById("m_name").value;
+        let body = document.getElementById("m_price").value;
 
         const xhr = new XMLHttpRequest();
-        xhr.open("PUT", "http://localhost:3001/products/" + id);
+        xhr.open("PUT", "https://jsonplaceholder.typicode.com/posts/" + id);
         xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
         const data = {
-          name: name,
-          price: price,
-          category: category,
-          stock: stock,
+          title: title,
+          body: body,
+          userId: 1,
         };
         xhr.send(JSON.stringify(data));
 
         xhr.onload = () => {
           if (xhr.status === 200) {
+            console.log("Product updated:", JSON.parse(xhr.response)); // 성공 메시지
             getProducts();
           } else {
             console.log(xhr.status, xhr.statusText);
@@ -163,12 +137,13 @@
 
       function deleteData(id) {
         const xhr = new XMLHttpRequest();
-        xhr.open("DELETE", "http://localhost:3001/products/" + id);
+        xhr.open("DELETE", "https://jsonplaceholder.typicode.com/posts/" + id);
         xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
         xhr.send();
 
         xhr.onload = () => {
           if (xhr.status === 200) {
+            console.log("Product deleted"); // 성공 메시지
             getProducts();
           } else {
             console.log(xhr.status, xhr.statusText);
@@ -182,11 +157,9 @@
     <h2>Products Management CRUD</h2>
     <button id="btnPro" style="font-size: 13px">Bring all products data</button>
     <div>
-      <input type="text" id="name" size="10" placeholder="name" />
-      <input type="text" id="price" size="10" placeholder="price" />
-      <input type="text" id="category" size="10" placeholder="category" />
-      <input type="text" id="stock" size="10" placeholder="stock" />
-      <button id="btnAdd" type="button">Add products</button>
+      <input type="text" id="name" size="10" placeholder="Title" />
+      <input type="text" id="price" size="10" placeholder="Body" />
+      <button id="btnAdd" type="button">Add Product</button>
     </div>
     <div
       id="contents"
