@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        text-align: center;
+        font-size: 30px;
+      }
+      .content {
+        width: 80%;
+        float: left;
+      }
+      div {
+        padding: 10px;
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        let btnPro = document.getElementById("btnPro");
+        let btnAdd = document.getElementById("btnAdd");
+        getProducts();
+        btnPro.addEventListener("click", function (event) {
+          getProducts();
+        });
+        btnAdd.addEventListener("click", function (event) {
+          event.preventDefault();
+          postData();
+        });
+      };
+
+      function getProducts() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3001/products");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send();
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const res = JSON.parse(xhr.response);
+            document.getElementById("contents").innerHTML = makeList(res);
+          } else {
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      function postData() {
+        let name = document.getElementById("name");
+        let price = document.getElementById("price");
+        let stock = document.getElementById("stock");
+        let category = document.getElementById("category");
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3001/products");
+        xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
+        const data = {
+          name: name.value,
+          price: price.value,
+          stock: stock.value,
+          category: category.value,
+        };
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+          if (xhr.status == 201) {
+            name.value = "";
+            price.value = "";
+            stock.value = "";
+            category.value = "";
+            getProducts();
+          } else {
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      function makeList(data) {
+        let str = "<ul>";
+        for (let key in data) {
+          str +=
+            "<li> " +
+            data[key].name +
+            " | $" +
+            data[key].price +
+            " | Stock: " +
+            data[key].stock +
+            " | Category: " +
+            data[key].category +
+            "</li>";
+          str +=
+            "<button onclick='updateForm(\"" +
+            data[key].id +
+            '", "' +
+            data[key].name +
+            '", "' +
+            data[key].price +
+            '", "' +
+            data[key].category +
+            '", "' +
+            data[key].stock +
+            "\")'>Modify</button>" +
+            "<button onclick='deleteData(\"" +
+            data[key].id +
+            "\")'>delete</button>";
+        }
+        str += "</ul>";
+        return str;
+      }
+
+      function updateForm(
+        id,
+        currentName,
+        currentPrice,
+        currentCategory,
+        currentStock
+      ) {
+        let updateForm = `
+        <div id="updateForm">
+          <input type="text" id="m_name" placeholder="New name" value="${currentName}" />
+          <input type="text" id="m_price" placeholder="New price" value="${currentPrice}" />
+          <input type="text" id="m_category" placeholder="New Category" value="${currentCategory}" />
+          <input type="text" id="m_stock" placeholder="New Stock" value="${currentStock}" />
+          <button onclick="updateData('${id}')">Modify</button>
+          <button id="cancelButton" onclick="cancelUpdate()">Cancel</button>
+        </div>
+      `;
+        document.getElementById("contents").innerHTML += updateForm;
+      }
+
+      function cancelUpdate() {
+        document.getElementById("updateForm").remove();
+      }
+
+      function updateData(id) {
+        let name = document.getElementById("m_name").value;
+        let price = document.getElementById("m_price").value;
+        let stock = document.getElementById("m_stock").value;
+        let category = document.getElementById("m_category").value;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", "http://localhost:3001/products/" + id);
+        xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
+        const data = {
+          name: name,
+          price: price,
+          category: category,
+          stock: stock,
+        };
+        xhr.send(JSON.stringify(data));
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            getProducts();
+          } else {
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      function deleteData(id) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "http://localhost:3001/products/" + id);
+        xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
+        xhr.send();
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            getProducts();
+          } else {
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+    </script>
+  </head>
+
+  <body>
+    <h2>Products Management CRUD</h2>
+    <button id="btnPro" style="font-size: 13px">Bring all products data</button>
+    <div>
+      <input type="text" id="name" size="10" placeholder="name" />
+      <input type="text" id="price" size="10" placeholder="price" />
+      <input type="text" id="category" size="10" placeholder="category" />
+      <input type="text" id="stock" size="10" placeholder="stock" />
+      <button id="btnAdd" type="button">Add products</button>
+    </div>
+    <div
+      id="contents"
+      style="height: 1000px; background-color: lightgoldenrodyellow"
+    ></div>
+  </body>
+</html>

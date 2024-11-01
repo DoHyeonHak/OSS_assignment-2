@@ -1,0 +1,102 @@
+{
+  "products": [
+    {
+      "id": "19b2",
+      "name": "Wireless Mouse",
+      "price": "25",
+      "stock": "150",
+      "category": "Electronics"
+    },
+    {
+      "id": "d1bd",
+      "name": "Bluetooth Speaker",
+      "price": "45",
+      "stock": "80",
+      "category": "Electronics"
+    },
+    {
+      "id": "eca7",
+      "name": "Water Bottle",
+      "price": "15",
+      "stock": "200",
+      "category": "Sports"
+    },
+    {
+      "id": "19e5",
+      "name": "Yoga Mat",
+      "price": "30",
+      "stock": "50",
+      "category": "Sports"
+    },
+    {
+      "id": "a4f2",
+      "name": "Desk Lamp",
+      "price": "40",
+      "stock": "60",
+      "category": "Home & Office"
+    },
+    {
+      "id": "b5g3",
+      "name": "Notebook",
+      "price": "10",
+      "stock": "500",
+      "category": "Stationery"
+    },
+    {
+      "id": "c6h4",
+      "name": "Running Shoes",
+      "price": "75",
+      "stock": "120",
+      "category": "Fashion"
+    },
+    {
+      "id": "d7i5",
+      "name": "Backpack",
+      "price": "50",
+      "stock": "95",
+      "category": "Accessories"
+    },
+    {
+      "id": "e8j6",
+      "name": "Sunglasses",
+      "price": "60",
+      "stock": "70",
+      "category": "Fashion"
+    },
+    {
+      "id": "f9k7",
+      "name": "Blender",
+      "price": "90",
+      "stock": "40",
+      "category": "Kitchen"
+    },
+    {
+      "id": "g0l8",
+      "name": "Electric Kettle",
+      "price": "35",
+      "stock": "75",
+      "category": "Kitchen"
+    },
+    {
+      "id": "h1m9",
+      "name": "Smartphone Stand",
+      "price": "20",
+      "stock": "150",
+      "category": "Accessories"
+    },
+    {
+      "id": "i2n0",
+      "name": "Gaming Keyboard",
+      "price": "110",
+      "stock": "55",
+      "category": "Electronics"
+    },
+    {
+      "id": "j3o1",
+      "name": "Wristwatch",
+      "price": "120",
+      "stock": "30",
+      "category": "Fashion"
+    }
+  ]
+}
